@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 
 interface ContainerProps {
   type?: 'success' | 'error' | 'info';
-  hasDescription?: boolean;
+  $hasDescription?: number;
 }
 
 const containerTypeVariations = {
@@ -63,7 +63,7 @@ export const Container = styled(animated.div)<ContainerProps>`
   }
 
   ${props =>
-    !props.hasDescription &&
+    !props.$hasDescription &&
     css`
       align-items: center;
 

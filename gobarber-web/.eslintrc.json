@@ -34,6 +34,8 @@
     "import/prefer-default-export": "off",
     "no-use-before-define": "off",
     "no-unused-expressions": "off",
+    "@typescript-eslint/calmelcase": "off",
+    "camelcase": "off",
     "@typescript-eslint/explicit-function-return-type": [
       "error",
       {
