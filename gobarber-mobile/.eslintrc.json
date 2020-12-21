@@ -39,6 +39,7 @@
     "react/prop-types": "off",
     "camelcase": "off",
     "typescript/camelcase": "off",
+    "import/no-duplicates": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
