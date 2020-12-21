@@ -11,7 +11,7 @@ const App: React.FC = () => {
     <NavigationContainer>
       <StatusBar
         barStyle="light-content"
-        backgroundColor="#312e38"
+        backgroundColor="transparent"
         translucent={true}
       />
       <AppProvider>
