@@ -29,7 +29,8 @@ interface AuthContextData {
   user: User;
   loading: boolean;
   signIn(credentials: SignInCredentials): Promise<void>;
-  signOut(): void;
+  signOut(): Promise<void>;
+  updateUser(user: User): Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -78,9 +79,31 @@ const AuthProvider: React.FC = ({ children }) => {
     setData({} as AuthState);
   }, []);
 
+  const updateUser = useCallback(
+    async (user: User) => {
+      await AsyncStorage.setItem('@GoBarber:user', JSON.stringify(user));
+
+      if (!data) {
+        return signOut();
+      }
+
+      setData({
+        token: data.token,
+        user,
+      });
+    },
+    [data, signOut],
+  );
+
   return (
     <AuthContext.Provider
-      value={{ user: data?.user || ({} as User), signIn, signOut, loading }}
+      value={{
+        user: data?.user || ({} as User),
+        signIn,
+        signOut,
+        updateUser,
+        loading,
+      }}
     >
       {children}
     </AuthContext.Provider>
